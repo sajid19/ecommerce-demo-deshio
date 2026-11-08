@@ -1,0 +1,10 @@
+import type { MetadataRoute } from "next";
+import { IS_PRODUCTION, SITE_URL } from "@/lib/seo";
+
+export default function robots(): MetadataRoute.Robots {
+  if (!IS_PRODUCTION) return { rules: { userAgent: "*", disallow: "/" } };
+  return {
+    rules: { userAgent: "*", allow: "/", disallow: ["/account", "/cart", "/checkout", "/order-confirmation", "/login", "/register", "/search", "/wishlist"] },
+    sitemap: `${SITE_URL}/sitemap.xml`,
+  };
+}

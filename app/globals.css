@@ -1,0 +1,206 @@
+/*
+ * Deshio storefront tokens (task 871). Own palette, derived from the logo:
+ * terracotta rust (primary), mustard gold (accent), sage grey (quiet surfaces),
+ * on warm cream. Light mode only. Contrast (WCAG, computed): foreground/background 16.7,
+ * primary-foreground/primary 6.9, muted-foreground/background 6.6, accent-foreground/accent 6.9,
+ * destructive-fg 5.8, success-fg 5.5, ink-foreground/ink 13.6.
+ * Hex appears ONLY inside the jamdani SVG data-URIs below (data-URIs cannot read CSS vars);
+ * they mirror --primary #8c4230 and --accent #cfa441.
+ */
+
+@import "tailwindcss";
+
+:root {
+  --radius: 0.75rem;
+
+  /* Surfaces */
+  --background: oklch(0.985 0.008 85);
+  --foreground: oklch(0.22 0.02 40);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 40);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 40);
+  --muted: oklch(0.955 0.012 85);
+  --muted-foreground: oklch(0.47 0.02 50);
+  --secondary: oklch(0.94 0.02 85);
+  --secondary-foreground: oklch(0.3 0.03 40);
+  --sage: oklch(0.72 0.02 110);
+  --sage-foreground: oklch(0.22 0.02 40);
+
+  /* Brand */
+  --primary: oklch(0.47 0.105 35);
+  --primary-foreground: oklch(0.985 0.008 85);
+  --accent: oklch(0.74 0.125 85);
+  --accent-foreground: oklch(0.25 0.04 70);
+  --ink: oklch(0.27 0.04 35); /* dark band: announcement bar, footer */
+  --ink-foreground: oklch(0.96 0.015 85);
+
+  /* State */
+  --destructive: oklch(0.52 0.19 25);
+  --destructive-foreground: oklch(0.985 0.008 85);
+  --success: oklch(0.5 0.1 152);
+  --success-foreground: oklch(0.985 0.008 85);
+
+  /* Lines */
+  --border: oklch(0.88 0.02 80);
+  --input: oklch(0.84 0.02 80);
+  --ring: oklch(0.47 0.105 35);
+  --overlay: oklch(0.22 0.02 40 / 50%);
+
+  /* Layout */
+  --header-h: 4.5rem;
+  --navbar-h: 4rem; /* mobile bottom SmartNavBar */
+  --announce-h: 2.25rem;
+
+  /* Motion */
+  --duration-fast: 100ms;
+  --duration-base: 150ms;
+  --duration-slow: 250ms;
+  --marquee-duration: 38s;
+
+  /* Jamdani woven border: rust diamonds with gold centres on a cream ground, 24x12 tile */
+  --jamdani: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Crect width='24' height='12' fill='%23f1eadc'/%3E%3Cpath d='M12 1 L19 6 L12 11 L5 6Z' fill='%238c4230'/%3E%3Cpath d='M12 4 L15 6 L12 8 L9 6Z' fill='%23cfa441'/%3E%3Cpath d='M0 0h24v1H0zM0 11h24v1H0z' fill='%23cfa441'/%3E%3C/svg%3E");
+  /* Same motif, transparent ground, for use on dark (ink) bands */
+  --jamdani-line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cpath d='M12 1 L19 6 L12 11 L5 6Z' fill='none' stroke='%23cfa441' stroke-width='1'/%3E%3Cpath d='M12 4.5 L13.5 6 L12 7.5 L10.5 6Z' fill='%23cfa441'/%3E%3C/svg%3E");
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-sage: var(--sage);
+  --color-sage-foreground: var(--sage-foreground);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-overlay: var(--overlay);
+
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+
+  /* next/font injects --font-fraunces / --font-inter / --font-hind on <html> in layout.tsx */
+  --font-display: var(--font-fraunces), "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-bangla: var(--font-hind), "Noto Sans Bengali", sans-serif;
+
+  /* Type scale (mobile-first; md+ bumps via classes in spec) */
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.4;
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.5;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-h4: 1.125rem;
+  --text-h4--line-height: 1.35;
+  --text-h3: 1.375rem;
+  --text-h3--line-height: 1.25;
+  --text-h2: 1.75rem;
+  --text-h2--line-height: 1.15;
+  --text-h1: 2.25rem;
+  --text-h1--line-height: 1.1;
+  --text-display: 3rem;
+  --text-display--line-height: 1.05;
+
+  --shadow-sm: 0 1px 2px oklch(0.22 0.02 40 / 8%);
+  --shadow-md: 0 6px 18px -4px oklch(0.22 0.02 40 / 14%);
+  --shadow-lg: 0 18px 40px -10px oklch(0.22 0.02 40 / 22%);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-marquee: marquee var(--marquee-duration) linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  :lang(bn), .font-bangla { font-family: var(--font-bangla); line-height: 1.7; }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+@layer utilities {
+  /* Decorative woven border: <div class="jamdani-border" aria-hidden /> */
+  .jamdani-border {
+    height: 0.75rem;
+    background-image: var(--jamdani);
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+  }
+  .jamdani-border-line {
+    height: 0.75rem;
+    background-image: var(--jamdani-line);
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+  }
+  /* Marquee: render content twice inside .marquee-track; track is width:max-content */
+  .marquee { overflow: hidden; }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: var(--animate-marquee);
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track { animation-play-state: paused; }
+
+  /* Scroll-snap row for carousels/rails (no JS lib) */
+  .snap-row {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1rem;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  .snap-row::-webkit-scrollbar { display: none; }
+  .snap-row > * { scroll-snap-align: start; flex: none; }
+  .snap-row-center > * { scroll-snap-align: center; }
+
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; transform: none; }
+  .marquee { overflow-x: auto; scrollbar-width: none; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
